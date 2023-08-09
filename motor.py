@@ -7,37 +7,21 @@ import plotly.express as px
 import glob as glob
 pd.options.display.max_columns = None
 
+
 ####################  RECOLLIDA DE DADES  #####################################
 
-estructura = pd.read_csv('Estructura de dades.txt', sep=";")
+
+estructura = pd.read_csv('EURECAT_ACPC\Estructura de dades.txt', sep=";")
 columnes = list(estructura['Museu'])
 columnes.insert(0, 'Museu')
-
-# Crear una lista para almacenar los nombres de los archivos procesados
-archivos_procesados = []
-
-# Leer los archivos y realizar la concatenación
-dataframes = []
-for f in glob.glob("Eurecat_2021/*.txt") + glob.glob("Eurecat_2022/*.txt"):
-    try:
-        df = pd.read_csv(f, sep='|', names=columnes, low_memory=False)
-        dataframes.append(df)
-        archivos_procesados.append(f)
-    except Exception as e:
-        print(f"Error en el archivo {f}: {e}")
-
-# Concatenar los DataFrames
-data = pd.concat(dataframes, ignore_index=True)
-
-# Convertir la columna 'Data venda' a datetime con manejo de errores
-for i, date_str in enumerate(data['Data venda']):
-    try:
-        data['Data venda'][i] = pd.to_datetime(date_str, format='%Y-%m-%d %H:%M:%S')
-    except Exception as e:
-        print(f"Error en el archivo {archivos_procesados[i]} (fila {i + 1}): '{date_str}': {e}")
-
-# Resto de tu código aquí
-
+#data = pd.read_csv("Eurecat_2021/eurecat_mnactec_2021.txt",
+ #                  sep='|', names=columnes, low_memory=False)
+data = pd.concat([pd.read_csv(f, sep='|', names=columnes, low_memory=False)
+                  for f in glob.glob("Eurecat_2021/*.txt")], ignore_index=True)
+data2 = pd.concat([pd.read_csv(f, sep='|', names=columnes, low_memory=False)
+                  for f in glob.glob("Eurecat_2022/*.txt")], ignore_index=True)
+data = pd.concat([data, data2], ignore_index=True)
+data['Data venda'] = pd.to_datetime(data['Data venda'], format='%Y-%m-%d %H:%M:%S.%f')
 data['dia'] = data['Data venda'].dt.date
 del data['Hora inici de la sessió']
 del data['Hora final de la sessió']
