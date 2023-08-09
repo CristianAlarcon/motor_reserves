@@ -1,0 +1,8 @@
+plotly.graph_objects
+numpy
+matplotlib
+pandas
+streamlit
+datetime
+plotly.express
+glob
