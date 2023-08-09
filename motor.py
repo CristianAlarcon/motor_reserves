@@ -9,7 +9,7 @@ pd.options.display.max_columns = None
 
 ####################  RECOLLIDA DE DADES  #####################################
 
-estructura = pd.read_csv('EURECAT_ACPC\Estructura de dades.txt', sep=";")
+estructura = pd.read_csv('Estructura de dades.txt', sep=";")
 columnes = list(estructura['Museu'])
 columnes.insert(0, 'Museu')
 
