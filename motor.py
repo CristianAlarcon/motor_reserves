@@ -21,8 +21,7 @@ data = pd.concat([pd.read_csv(f, sep='|', names=columnes, low_memory=False)
 data2 = pd.concat([pd.read_csv(f, sep='|', names=columnes, low_memory=False)
                   for f in glob.glob("Eurecat_2022/*.txt")], ignore_index=True)
 data = pd.concat([data, data2], ignore_index=True)
-data['Data venda'] = pd.to_datetime(data['Data venda'],
-                                    format='%Y-%m-%d %H:%M:%S')
+data['Data venda'] = pd.to_datetime(data['Data venda'], format='%Y-%m-%d %H:%M:%S')
 data['dia'] = data['Data venda'].dt.date
 del data['Hora inici de la sessió']
 del data['Hora final de la sessió']
