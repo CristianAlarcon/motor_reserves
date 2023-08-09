@@ -1,0 +1,35 @@
+Museu
+Data venda
+Codi terminal
+Número de tiquet
+Línia de tiquet
+Tipus línia (A: Actvitat, B: article)
+Codi activitat o article
+Hora inici de la sessió
+Hora final de la sessió
+Descripció de l'activitat o article
+Codi de la combinada
+Línia dela combinada
+Tarifa
+Descripció de la tarifa
+Persona o grup (P o G)
+Unitats
+Persones
+Grups
+Preu
+Descompte
+Import descompte
+Import de la línia
+Codi estadística
+Zona geogràfica
+Descripció zona estadística
+Canal reserva
+Identificació any reserva
+Número reserva
+Nom del titular de la reserva
+Canal orígen de la reserva
+Terminal orígen de la reserva
+Data venda orígen de la reserva
+Número orígen de la reserva
+Número de línia orígen de la reserva
+Codi del titular de la reserva
