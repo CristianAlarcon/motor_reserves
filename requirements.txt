@@ -1,6 +1,6 @@
 plotly
-numpy == 1.4.3
+numpy 
 matplotlib
-pandas
+pandas == 1.4.3
 streamlit
 datetime
